@@ -1,0 +1,130 @@
+
+<div class="wrapper">
+  <div id="cards" style="float:left;">
+    <ul style="list-style-type:none">
+      <li *ngFor = "let prospect of prospects;let i = index"> 
+        <div style="width:inherit">
+          <span style="float:left;">{{prospect.firstName}} {{prospect.lastName}} {{prospect.position}}</span>
+          <span style="float:right;">ETA: {{prospect.eta}} Rank: {{prospect.rank}} 
+          <button (click)="editProspect(i)">edit</button>
+          <button (click)="deleteProspect(i)">x</button></span><br/><br/>
+          <div id="hitCards" *ngIf="prospect.isHitter">
+            <span class="attr">Hit: {{prospect.hit}} </span>
+            <span class="attr">Power: {{prospect.power}}</span>
+            <span class="attr">Run: {{prospect.run}} </span> 
+            <span class="attr">Field: {{prospect.field}} </span> 
+            <span class="attr">Arm: {{prospect.arm}}</span><br/>
+          </div>
+          <div id="pitchCards" *ngIf="!prospect.isHitter">
+            <span class="attr">Fastball: {{prospect.fastball}} </span>
+            <span class="attr">{{prospect.secondPitch}}: {{prospect.secondGrade}}</span>
+            <span class="attr">{{prospect.thirdPitch}}: {{prospect.thirdGrade}} </span> 
+            <span class="attr">Control: {{prospect.control}} </span><br/> 
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+
+
+
+  <div id="inputBox">
+    <div id="names">
+      <span style="padding-right:10px">
+        <label>First</label>
+        <input class="inputs" [(ngModel)] = "newFirst">
+      </span>
+      <span style="padding-right:10px">
+        <label>Last</label>
+        <input class="inputs" [(ngModel)] = "newLast">
+      </span>
+      <span style="padding-right:10px">
+        <label>Position</label>
+        <!--<input class="inputs" [(ngModel)] = "newPosition">-->
+        <select [(ngModel)] = "newPosition">
+          
+          <option [hidden]="!isHitter" value="C">C</option>
+          <option [hidden]="!isHitter" value="1B">1B</option>
+          <option [hidden]="!isHitter" value="2B">2B</option>
+          <option [hidden]="!isHitter" value="3B">3B</option>
+          <option [hidden]="!isHitter" value="SS">SS</option>
+          <option [hidden]="!isHitter" value="IF">IF</option>
+          <option [hidden]="!isHitter" value="RF">RF</option>
+          <option [hidden]="!isHitter" value="CF">CF</option>
+          <option [hidden]="!isHitter" value="LF">LF</option>
+          <option [hidden]="!isHitter" value="OF">OF</option>
+          
+          <option [hidden]="!isPitcher" value="P">P</option>
+          
+        </select>
+      </span>
+      <span style="padding-right:10px">
+        <label>ETA</label>
+        <input class="inputs" [(ngModel)] = "newEta" type="number">
+      </span>
+      <span style="padding-right:10px">
+        <label>Rank</label>
+        <input class="inputs" [(ngModel)] = "newRank" type="number">
+      </span>
+      <button (click)="togglePosition()" style="float:left;margin-left:10px;margin-top:17px;">Toggle</button>
+    </div><br/><br/><br/>
+
+    <div id="hitTools" *ngIf="isHitter">
+      <span style="padding-right:10px">
+        <label>Hit</label>
+        <input class="inputs" [(ngModel)] = "newHit" type="number">
+      </span>
+      <span style="padding-right:10px">
+        <label>Power</label>
+        <input class="inputs" [(ngModel)] = "newPower" type="number">
+      </span>
+      <span style="padding-right:10px">
+        <label>Run</label>
+        <input class="inputs" [(ngModel)] = "newRun" type="number">
+      </span>
+      <span style="padding-right:10px">
+        <label>Field</label>
+        <input class="inputs" [(ngModel)] = "newField" type="number">
+      </span>
+      <span style="padding-right:10px">
+        <label>Arm</label>
+        <input class="inputs" [(ngModel)] = "newArm" type="number">
+      </span>
+    </div>
+    
+    <div id="pitchTools" *ngIf="!isHitter">
+      <span style="padding-right:10px">
+        <label>Fastball</label>
+        <input class="inputs" [(ngModel)] = "newFast" type="number">
+      </span>
+      <span style="padding-right:10px">
+          <label>2nd Pitch</label>
+          <input class="inputs" [(ngModel)] = "newSecond" type="text">
+        </span>
+      <span style="padding-right:10px">
+        <label>{{newSecond}}</label>
+        <input class="inputs" [(ngModel)] = "newsecondGrade" type="number">
+      </span>
+      <span style="padding-right:10px">
+          <label>3rd Pitch</label>
+          <input class="inputs" [(ngModel)] = "newThird" type="text">
+        </span>
+      <span style="padding-right:10px">
+        <label>{{newThird}}</label>
+        <input class="inputs" [(ngModel)] = "newthirdGrade" type="number">
+      </span>
+      <span style="padding-right:10px">
+        <label>Control</label>
+        <input class="inputs" [(ngModel)] = "newControl" type="number">
+      </span>
+    </div>
+    
+    <br><br>  
+    <div id="buttons">
+      <button style="float:left; padding-right:10px;" (click)="addProspect()">Add Prospect</button>
+      <button (click)="saveProspect(i)" style="float:left;margin-left:10px">Save Prospect</button>
+      
+    </div>
+  </div>
+</div>

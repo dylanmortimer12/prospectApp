@@ -1,0 +1,55 @@
+ul {
+    list-style: none;
+    color: #686868  
+  }
+  
+  li {
+      border-bottom: 1px solid #bfbfbf;
+      background-color: #BBEDFF;
+      margin-bottom: 5px;
+      padding: 10px;
+      width: 400px;
+  }
+  
+  .inputs {
+      float:left;
+      
+      width:60px;
+  }
+  
+  .attr {
+      float: left;
+      padding-right: 10px;
+      text-align: center;
+  }
+  
+  #cards {
+      margin-top: 30px;
+      width:400px;
+      padding-right: 40px;
+  }
+  
+  #inputBox {
+      width:450px;
+      float:left;
+      margin-left:40px;
+      margin-top: 45px;
+      background-color: #ECFAFF;
+      padding: 15px;
+  }
+  
+  #hitTools {
+      padding-top: 0px;
+  }
+  
+  #buttons {
+      padding-top: 15px;
+  }
+  
+  span {
+      float: left;
+  }
+  
+  label {
+      display: block;
+  }
